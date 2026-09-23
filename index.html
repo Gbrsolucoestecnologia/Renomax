@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Renomax Energia Solar — Reduza sua conta de energia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    box-sizing:border-box;
+    --navy-deep:#0A2540;
+    --navy:#0F3559;
+    --navy-light:#175E8C;
+    --teal:#1FA6A3;
+    --teal-light:#5CCFCB;
+    --sun:#F2A93B;
+    --ink:#0E1E2B;
+    --paper:#F5F8FA;
+    --paper-2:#EDF2F5;
+    --white:#FFFFFF;
+    --line:rgba(15,53,89,0.12);
+    --shadow-soft:0 20px 45px -25px rgba(10,37,64,0.35);
+    --font-display:'Space Grotesk', 'Segoe UI', Arial, sans-serif;
+    --font-body:'Inter', 'Segoe UI', Arial, sans-serif;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#0D2338;
+      --paper-2:#0A1E30;
+      --ink:#EAF1F6;
+      --white:#122A42;
+      --line:rgba(255,255,255,0.12);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#0D2338;
+    --paper-2:#0A1E30;
+    --ink:#EAF1F6;
+    --white:#122A42;
+    --line:rgba(255,255,255,0.12);
+  }
+  html{scroll-behavior:smooth; scroll-padding-top:env(safe-area-inset-top,0px);}
+  *,*::before,*::after{box-sizing:inherit;}
+  body{
+    margin:0;
+    font-family:var(--font-body);
+    color:var(--ink);
+    background:var(--paper);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  h1,h2,h3,h4{font-family:var(--font-display);margin:0;line-height:1.08;letter-spacing:-0.01em;text-wrap:balance;hyphens:none;word-break:keep-all;overflow-wrap:normal;}
+  p{margin:0;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px;}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    padding:15px 28px;border-radius:999px;font-family:var(--font-body);
+    font-weight:600;font-size:15.5px;border:none;cursor:pointer;
+    transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+    white-space:nowrap;
+  }
+  .btn:focus-visible{outline:3px solid var(--teal-light);outline-offset:3px;}
+  .btn-primary{background:var(--teal);color:#062B2A;box-shadow:0 14px 30px -12px rgba(31,166,163,0.65);}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 34px -12px rgba(31,166,163,0.75);}
+  .btn-ghost{background:rgba(255,255,255,0.08);color:var(--white);border:1.5px solid rgba(255,255,255,0.35);}
+  .btn-ghost:hover{background:rgba(255,255,255,0.16);transform:translateY(-2px);}
+  .btn-dark{background:var(--navy);color:#fff;}
+  .btn-dark:hover{transform:translateY(-2px);box-shadow:var(--shadow-soft);}
+  .eyebrow{
+    font-family:var(--font-body);font-weight:600;font-size:13.5px;color:var(--teal);
+    display:flex;align-items:center;gap:10px;margin-bottom:14px;
+  }
+  .eyebrow .dash{width:26px;height:2px;background:var(--teal);display:inline-block;border-radius:2px;}
+  section{position:relative;}
+  .section-pad{padding:96px 0;}
+  @media (max-width:760px){.section-pad{padding:64px 0;}}
+  .section-head{max-width:640px;margin-bottom:52px;}
+  .section-head h2{font-size:clamp(28px,4vw,40px);color:var(--navy);}
+  .section-head p{margin-top:14px;font-size:17px;line-height:1.6;color:#3B5063;}
+
+  /* ---------- Decorative diamond motif (brand mark echo) ---------- */
+  .motif{position:absolute;pointer-events:none;opacity:0.5;}
+  .motif svg{display:block;}
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky;top:env(safe-area-inset-top,0px);z-index:100;
+    background:linear-gradient(100deg,#0A374E 0%, #123F62 55%, #175E8C 100%);
+    box-shadow:0 1px 0 rgba(255,255,255,0.06) inset, 0 12px 30px -18px rgba(0,0,0,0.5);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 24px;max-width:1180px;margin:0 auto;}
+  .brand{display:flex;align-items:center;height:38px;flex-shrink:0;}
+  .brand img{height:100%;width:auto;}
+  .nav-links{display:flex;align-items:center;gap:20px;flex-shrink:0;}
+  .nav-links a{color:rgba(255,255,255,0.88);font-size:14px;font-weight:500;transition:color .2s;white-space:nowrap;}
+  .nav-links a:hover{color:#fff;}
+  .nav-cta{display:flex;align-items:center;gap:12px;flex-shrink:0;}
+  .nav-wa{
+    display:flex;align-items:center;gap:8px;background:var(--teal);color:#062B2A;
+    padding:10px 16px;border-radius:999px;font-weight:600;font-size:13.5px;white-space:nowrap;transition:transform .2s;
+  }
+  .nav-wa:hover{transform:translateY(-2px);}
+  .burger{display:none;background:none;border:none;color:#fff;padding:6px;cursor:pointer;flex-shrink:0;}
+  .mobile-panel{display:none;flex-direction:column;gap:2px;background:#0A2540;padding:8px 24px 20px;}
+  .mobile-panel a{color:rgba(255,255,255,0.9);padding:12px 0;font-size:15px;border-bottom:1px solid rgba(255,255,255,0.08);}
+  @media (max-width:1080px){
+    .nav-links{display:none;}
+    .burger{display:block;}
+    body.nav-open .mobile-panel{display:flex;}
+  }
+  @media (max-width:400px){
+    .nav-wa span.wa-num{display:none;}
+    .nav-wa{padding:10px 12px;}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    background:radial-gradient(1100px 620px at 82% -10%, rgba(31,166,163,0.16), transparent 60%), linear-gradient(185deg,#0A2540 0%,#0F3559 55%,#123F62 100%);
+    color:#fff;overflow:hidden;
+  }
+  .hero .wrap{
+    display:grid;grid-template-columns:1.05fr 0.95fr;gap:56px;align-items:center;
+    padding-top:76px;padding-bottom:88px;
+  }
+  .hero-eyebrow{display:flex;align-items:center;gap:10px;color:var(--teal-light);font-weight:600;font-size:13.5px;margin-bottom:22px;}
+  .hero-eyebrow .dash{width:26px;height:2px;background:var(--teal-light);display:inline-block;border-radius:2px;}
+  .hero h1{font-size:clamp(34px,4.6vw,54px);color:#fff;}
+  .hero h1 .accent{color:var(--teal-light);}
+  .hero p.lead{margin-top:22px;font-size:18px;line-height:1.65;color:rgba(255,255,255,0.82);max-width:520px;}
+  .hero-ctas{display:flex;gap:16px;margin-top:34px;flex-wrap:wrap;}
+  .hero-stats{display:flex;gap:36px;margin-top:52px;flex-wrap:wrap;}
+  .hero-stats .stat b{display:block;font-family:var(--font-display);font-size:28px;color:#fff;}
+  .hero-stats .stat span{font-size:13.5px;color:rgba(255,255,255,0.62);}
+  .hero-visual{position:relative;}
+  .hero-frame{
+    position:relative;border-radius:26px;overflow:hidden;
+    box-shadow:0 40px 80px -30px rgba(0,0,0,0.55);
+    border:1px solid rgba(255,255,255,0.15);
+  }
+  .hero-frame img{width:100%;height:520px;object-fit:cover;}
+  .hero-bg-video{width:100%;height:520px;object-fit:cover;display:block;opacity:0.8;}
+  .hero-frame::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(0deg, rgba(10,37,64,0.55) 0%, transparent 45%);
+  }
+  .hero-chip{
+    position:absolute;left:-22px;bottom:34px;background:#fff;color:var(--navy);
+    padding:16px 22px;border-radius:16px;box-shadow:0 24px 50px -20px rgba(0,0,0,0.4);
+    display:flex;align-items:center;gap:14px;max-width:230px;z-index:3;
+  }
+  .hero-chip .num{font-family:var(--font-display);font-size:26px;font-weight:700;color:var(--teal);}
+  .hero-chip .txt{font-size:12.5px;line-height:1.35;color:#3B5063;}
+  @media (max-width:980px){
+    .hero .wrap{grid-template-columns:1fr;padding-top:52px;}
+    .hero-visual{order:-1;}
+    .hero-frame img{height:340px;}
+    .hero-bg-video{height:340px;}
+    .hero-chip{left:16px;bottom:-24px;}
+  }
+
+  /* ---------- Diferenciais ---------- */
+  .diff-strip{background:var(--white);border-bottom:1px solid var(--line);}
+  .diff-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;}
+  .diff-item{padding:40px 30px;border-left:1px solid var(--line);}
+  .diff-item:first-child{border-left:none;}
+  .diff-item .ic{color:var(--teal);margin-bottom:16px;}
+  .diff-item h4{font-size:16.5px;color:var(--navy);margin-bottom:8px;}
+  .diff-item p{font-size:14.5px;line-height:1.55;color:#4A5C6C;}
+  @media (max-width:900px){
+    .diff-grid{grid-template-columns:repeat(2,1fr);}
+    .diff-item:nth-child(3){border-left:none;}
+  }
+  @media (max-width:560px){
+    .diff-grid{grid-template-columns:1fr;}
+    .diff-item{border-left:none !important;border-top:1px solid var(--line);}
+    .diff-item:first-child{border-top:none;}
+  }
+
+  /* ---------- Como funciona ---------- */
+  .flow{background:var(--paper);}
+  .flow-diagram-wrap{display:flex;justify-content:center;}
+  .flow-diagram-img{width:100%;max-width:1100px;height:auto;display:block;border-radius:22px;box-shadow:0 30px 60px -30px rgba(15,53,89,0.35);}
+  .flow-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;}
+  .flow-item{position:relative;padding:30px 24px 26px;background:var(--white);border-radius:18px;border:1px solid var(--line);}
+  .flow-item .flow-num{
+    font-family:var(--font-display);font-size:13px;font-weight:700;color:var(--teal);
+    width:34px;height:34px;border-radius:10px;background:rgba(31,166,163,0.12);
+    display:flex;align-items:center;justify-content:center;margin-bottom:18px;
+  }
+  .flow-item h4{font-size:15.5px;color:var(--navy);margin-bottom:8px;}
+  .flow-item p{font-size:14px;line-height:1.55;color:#4A5C6C;}
+  .flow-item:not(:last-child)::after{
+    content:"";position:absolute;top:47px;right:-26px;width:26px;height:2px;
+    background:repeating-linear-gradient(90deg, var(--line) 0 6px, transparent 6px 12px);
+  }
+  @media (max-width:940px){
+    .flow-grid{grid-template-columns:repeat(2,1fr);}
+    .flow-item:nth-child(odd)::after{display:none;}
+  }
+  @media (max-width:560px){
+    .flow-grid{grid-template-columns:1fr;}
+    .flow-item::after{display:none;}
+  }
+
+  /* ---------- Benefícios ---------- */
+  .benefits{background:var(--white);}
+  .benefits-layout{display:grid;grid-template-columns:0.9fr 1.1fr;gap:60px;align-items:start;}
+  .benefit-row{display:flex;gap:18px;padding:22px 0;border-top:1px solid var(--line);}
+  .benefit-row:last-child{border-bottom:1px solid var(--line);}
+  .benefit-row .ic{flex:none;color:var(--teal);}
+  .benefit-row h4{font-size:16.5px;color:var(--navy);margin-bottom:6px;}
+  .benefit-row p{font-size:14.5px;line-height:1.6;color:#4A5C6C;}
+  .benefits-side{
+    background:linear-gradient(160deg,#0F3559,#0A2540);border-radius:22px;padding:40px 34px;color:#fff;
+    position:sticky;top:110px;
+  }
+  .benefits-side .big{font-family:var(--font-display);font-size:52px;color:var(--teal-light);}
+  .benefits-side p{margin-top:10px;font-size:14.5px;color:rgba(255,255,255,0.78);line-height:1.6;}
+  .benefits-side .divider{height:1px;background:rgba(255,255,255,0.15);margin:26px 0;}
+  @media (max-width:900px){
+    .benefits-layout{grid-template-columns:1fr;}
+    .benefits-side{position:static;}
+  }
+
+  /* ---------- Calculadora ---------- */
+  .calc{background:linear-gradient(175deg,#0A2540,#0F3559 60%,#123F62);color:#fff;overflow:hidden;}
+  .calc .section-head p{color:rgba(255,255,255,0.72);}
+  .calc .section-head h2{color:#fff;}
+  .calc-panel{
+    background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);
+    border-radius:26px;padding:44px;backdrop-filter:blur(6px);overflow:hidden;
+  }
+  .calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;}
+  .segs{display:flex;gap:10px;margin-bottom:26px;flex-wrap:wrap;}
+  .seg-btn{
+    flex:1;min-width:120px;padding:13px 14px;border-radius:12px;border:1.5px solid rgba(255,255,255,0.2);
+    background:transparent;color:rgba(255,255,255,0.75);font-family:var(--font-body);font-weight:600;
+    font-size:14px;cursor:pointer;transition:all .2s;
+  }
+  .seg-btn.active{background:var(--teal);border-color:var(--teal);color:#062B2A;}
+  .field-label{font-size:13px;color:rgba(255,255,255,0.6);margin-bottom:8px;display:block;font-weight:500;}
+  .input-money{
+    display:flex;align-items:center;background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.22);
+    border-radius:14px;padding:6px 18px;margin-bottom:22px;
+  }
+  .input-money span{font-family:var(--font-display);font-size:20px;color:var(--teal-light);margin-right:8px;}
+  .input-money input{
+    background:none;border:none;outline:none;color:#fff;font-family:var(--font-display);
+    font-size:24px;width:100%;padding:12px 0;
+  }
+  .slider{width:100%;accent-color:var(--teal);margin-top:4px;}
+  .calc-note{font-size:12.5px;color:rgba(255,255,255,0.5);margin-top:18px;line-height:1.55;}
+  .calc-results{display:flex;flex-direction:column;gap:16px;justify-content:center;}
+  .result-card{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.14);border-radius:16px;padding:22px 24px;}
+  .result-card.highlight{background:linear-gradient(120deg,#1FA6A3,#17827F);border:none;}
+  .result-card .rlabel{font-size:13px;color:rgba(255,255,255,0.65);}
+  .result-card.highlight .rlabel{color:rgba(6,43,42,0.75);}
+  .result-card .rvalue{font-family:var(--font-display);font-size:32px;margin-top:4px;color:#fff;}
+  .result-card.highlight .rvalue{color:#062B2A;}
+  .result-mini{display:flex;gap:14px;}
+  .result-mini .result-card{flex:1;padding:16px 18px;}
+  .result-mini .rvalue{font-size:20px;}
+  @media (max-width:900px){.calc-grid{grid-template-columns:1fr;}.calc-panel{padding:28px 22px;}}
+
+  /* ---------- Vídeo ---------- */
+  .video-sec{background:var(--paper);}
+  .video-layout{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center;}
+  .video-card{
+    position:relative;border-radius:24px;overflow:hidden;box-shadow:var(--shadow-soft);
+    background:#000;aspect-ratio:16/9;
+  }
+  .video-card video{width:100%;height:100%;object-fit:cover;display:block;}
+  .video-card .poster-layer{position:absolute;inset:0;cursor:pointer;}
+  .video-card .poster-layer img{width:100%;height:100%;object-fit:cover;}
+  .video-card .poster-layer::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg, rgba(10,25,40,0.55), rgba(10,25,40,0.05) 55%);}
+  .play-btn{
+    position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+    width:78px;height:78px;border-radius:50%;background:rgba(255,255,255,0.95);
+    display:flex;align-items:center;justify-content:center;box-shadow:0 20px 40px -14px rgba(0,0,0,0.5);
+    transition:transform .25s ease;
+  }
+  .play-btn.small{width:56px;height:56px;}
+  .poster-layer:hover .play-btn{transform:translate(-50%,-50%) scale(1.08);}
+  .play-btn svg{margin-left:4px;}
+  .video-copy .tag{
+    display:inline-flex;align-items:center;gap:8px;background:rgba(31,166,163,0.12);color:var(--teal);
+    padding:8px 16px;border-radius:999px;font-size:13px;font-weight:600;margin-bottom:20px;
+  }
+  .video-copy h2{font-size:clamp(26px,3.6vw,36px);color:var(--navy);margin-bottom:16px;}
+  .video-copy p{font-size:16px;line-height:1.65;color:#3B5063;margin-bottom:26px;}
+  @media (max-width:900px){.video-layout{grid-template-columns:1fr;}.video-copy{order:2;}}
+
+  /* ---------- Galeria ---------- */
+  .gallery-sec{background:var(--white);}
+  .gal-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:190px;grid-auto-flow:dense;gap:16px;}
+  .gal-item{position:relative;border-radius:16px;overflow:hidden;cursor:pointer;background:var(--paper-2);}
+  .gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
+  .gal-item:hover img{transform:scale(1.06);}
+  .gal-item .tagchip{
+    position:absolute;left:10px;bottom:10px;background:rgba(10,37,64,0.72);color:#fff;
+    font-size:11.5px;font-weight:600;padding:6px 11px;border-radius:999px;backdrop-filter:blur(3px);
+  }
+  .gal-item.big{grid-column:span 2;grid-row:span 2;}
+  .gal-item.wide{grid-column:span 2;grid-row:span 1;}
+  .gal-item.tall{grid-column:span 1;grid-row:span 2;}
+  @media (max-width:900px){
+    .gal-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:160px;}
+    .gal-item.big{grid-column:span 2;grid-row:span 2;}
+    .gal-item.wide{grid-column:span 2;grid-row:span 1;}
+    .gal-item.tall{grid-column:span 1;grid-row:span 1;}
+  }
+  @media (max-width:560px){
+    .gal-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:130px;gap:10px;}
+    .gal-item.big{grid-column:span 2;grid-row:span 1;}
+  }
+
+  .lightbox{
+    position:fixed;inset:0;background:rgba(6,15,24,0.92);z-index:200;
+    display:none;align-items:center;justify-content:center;padding:30px;
+  }
+  .lightbox.open{display:flex;}
+  .lightbox img{max-width:min(920px,92vw);max-height:82vh;border-radius:14px;object-fit:contain;}
+  .lightbox-close{
+    position:absolute;top:env(safe-area-inset-top,22px);right:22px;width:44px;height:44px;border-radius:50%;
+    background:rgba(255,255,255,0.12);color:#fff;border:none;font-size:20px;cursor:pointer;
+  }
+  .lightbox-cap{position:absolute;bottom:env(safe-area-inset-bottom,26px);left:0;right:0;text-align:center;color:rgba(255,255,255,0.75);font-size:13.5px;}
+
+  /* ---------- Clientes ---------- */
+  .clients{background:var(--paper);overflow:hidden;}
+  .marquee-mask{position:relative;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);}
+  .marquee-track{display:flex;gap:26px;width:max-content;animation:scrollx 38s linear infinite;}
+  .marquee-track:hover{animation-play-state:paused;}
+  .client-card{
+    flex:none;width:250px;height:160px;background:#fff;border:1px solid var(--line);border-radius:18px;
+    display:flex;align-items:center;justify-content:center;padding:26px;
+  }
+  .client-card img{max-width:100%;max-height:100%;object-fit:contain;}
+  @keyframes scrollx{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+  /* ---------- Feedbacks em vídeo ---------- */
+  .testi-sec{background:var(--white);}
+  .testi-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,300px));
+    justify-content:center;gap:32px;margin-top:8px;
+  }
+  .testi-video-wrap{
+    position:relative;border-radius:20px;overflow:hidden;aspect-ratio:9/16;
+    background:#000;box-shadow:var(--shadow-soft);
+  }
+  .testi-video{width:100%;height:100%;object-fit:cover;display:block;}
+  .testi-poster img{width:100%;height:100%;object-fit:cover;}
+  .testi-cap{margin-top:14px;text-align:center;}
+  .testi-cap b{display:block;color:var(--navy);font-size:15px;font-family:var(--font-display);}
+  .testi-cap span{font-size:13px;color:#5B7186;}
+
+  /* ---------- Contato ---------- */
+  .contact{background:linear-gradient(175deg,#0A2540,#0F3559);color:#fff;}
+  .contact .section-head h2{color:#fff;}
+  .contact .section-head p{color:rgba(255,255,255,0.72);}
+  .contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .contact-card{
+    background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:20px;
+    padding:32px 26px;transition:transform .25s ease, background .25s ease;
+  }
+  .contact-card:hover{transform:translateY(-4px);background:rgba(255,255,255,0.1);}
+  .contact-card .cic{
+    width:52px;height:52px;border-radius:14px;background:rgba(31,166,163,0.18);color:var(--teal-light);
+    display:flex;align-items:center;justify-content:center;margin-bottom:20px;
+  }
+  .contact-card h4{font-size:17px;margin-bottom:8px;}
+  .contact-card p{font-size:14.5px;color:rgba(255,255,255,0.72);margin-bottom:18px;line-height:1.5;}
+  .contact-card a.link{font-size:14px;font-weight:600;color:var(--teal-light);display:inline-flex;align-items:center;gap:6px;}
+  @media (max-width:860px){.contact-grid{grid-template-columns:1fr;}}
+
+  .cta-band{
+    margin-top:64px;padding:44px;border-radius:24px;background:linear-gradient(120deg,#1FA6A3,#14807D);
+    display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;color:#062B2A;
+  }
+  .cta-band h3{font-size:24px;color:#062B2A;max-width:480px;}
+  .cta-band .btn-dark{background:#062B2A;}
+
+  /* ---------- Footer ---------- */
+  footer{background:#081C30;color:rgba(255,255,255,0.65);padding:56px 0 30px;}
+  .foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:40px;padding-bottom:36px;border-bottom:1px solid rgba(255,255,255,0.08);}
+  .foot-brand img{height:34px;width:auto;margin-bottom:16px;}
+  .foot-brand p{font-size:13.5px;line-height:1.7;color:rgba(255,255,255,0.5);max-width:300px;}
+  .foot-col h5{color:#fff;font-size:14px;margin-bottom:16px;font-family:var(--font-body);font-weight:600;}
+  .foot-col a, .foot-col p{display:block;font-size:14px;color:rgba(255,255,255,0.6);margin-bottom:10px;}
+  .foot-col a:hover{color:#fff;}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:26px;font-size:12.5px;color:rgba(255,255,255,0.4);flex-wrap:wrap;gap:12px;}
+  .foot-social{display:flex;gap:12px;}
+  .foot-social a{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;}
+  @media (max-width:860px){.foot-grid{grid-template-columns:1fr;gap:30px;}}
+
+  /* ---------- WhatsApp floating ---------- */
+  .wa-float{
+    position:fixed;right:22px;bottom:calc(22px + env(safe-area-inset-bottom,0px));z-index:150;
+    width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,var(--teal-light),var(--teal));display:flex;align-items:center;justify-content:center;
+    box-shadow:0 16px 34px -10px rgba(31,166,163,0.7);
+  }
+  .wa-float img{width:30px;height:30px;display:block;}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.show{opacity:1;transform:none;}
+
+  /* ---------- Tech / solar visual language ---------- */
+  .tabular{font-variant-numeric:tabular-nums;}
+
+  .grid-texture{
+    position:absolute;inset:0;pointer-events:none;
+    background-image:
+      linear-gradient(rgba(92,207,203,0.12) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(92,207,203,0.12) 1px, transparent 1px);
+    background-size:42px 42px;
+    -webkit-mask-image:radial-gradient(85% 85% at 65% 8%, #000 0%, transparent 72%);
+    mask-image:radial-gradient(85% 85% at 65% 8%, #000 0%, transparent 72%);
+  }
+  .grid-texture.on-light{
+    background-image:
+      linear-gradient(rgba(15,53,89,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(15,53,89,0.06) 1px, transparent 1px);
+  }
+
+  .motif svg{animation:spin-slow 90s linear infinite;transform-origin:50% 50%;}
+  @keyframes spin-slow{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+
+  .circuit-layer{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+  .circuit-layer svg{position:absolute;width:100%;height:100%;top:0;left:0;}
+  .pulse-dot{
+    position:absolute;width:6px;height:6px;border-radius:50%;
+    background:var(--teal-light);
+    box-shadow:0 0 10px 3px rgba(92,207,203,0.8), 0 0 22px 8px rgba(92,207,203,0.35);
+    offset-rotate:0deg;
+    animation-timing-function:linear;
+    animation-iteration-count:infinite;
+  }
+  .p1{offset-path:path("M -10,120 C 150,40 300,180 520,90 S 760,10 980,70");animation:travel1 7s linear infinite;}
+  .p2{offset-path:path("M -10,260 C 200,340 380,180 600,260 S 860,340 1040,240");animation:travel2 9s linear infinite 1.4s;}
+  .p3{offset-path:path("M -10,60 C 120,140 260,60 420,130 S 640,210 820,150");animation:travel3 8s linear infinite 3s;}
+  @keyframes travel1{from{offset-distance:0%;opacity:0;}8%{opacity:1;}92%{opacity:1;}to{offset-distance:100%;opacity:0;}}
+  @keyframes travel2{from{offset-distance:0%;opacity:0;}8%{opacity:1;}92%{opacity:1;}to{offset-distance:100%;opacity:0;}}
+  @keyframes travel3{from{offset-distance:0%;opacity:0;}8%{opacity:1;}92%{opacity:1;}to{offset-distance:100%;opacity:0;}}
+
+  .live-badge{
+    position:absolute;top:18px;left:18px;display:inline-flex;align-items:center;gap:9px;
+    background:rgba(10,37,64,0.55);backdrop-filter:blur(6px);
+    border:1px solid rgba(255,255,255,0.18);color:#fff;
+    padding:9px 16px 9px 12px;border-radius:999px;font-size:12.5px;font-weight:600;
+    box-shadow:0 14px 30px -14px rgba(0,0,0,0.5);z-index:3;
+  }
+  .live-dot{width:8px;height:8px;border-radius:50%;background:#4ADE80;position:relative;flex:none;}
+  .live-dot::after{
+    content:"";position:absolute;inset:-4px;border-radius:50%;background:#4ADE80;opacity:0.55;
+    animation:livepulse 1.8s ease-out infinite;
+  }
+  @keyframes livepulse{0%{transform:scale(0.5);opacity:0.55;}100%{transform:scale(2.2);opacity:0;}}
+
+  .hud-corner{position:absolute;width:26px;height:26px;border:2px solid var(--teal);opacity:0.55;}
+  .hud-corner.tl{top:14px;left:14px;border-right:none;border-bottom:none;border-top-left-radius:8px;}
+  .hud-corner.tr{top:14px;right:14px;border-left:none;border-bottom:none;border-top-right-radius:8px;}
+  .hud-corner.bl{bottom:14px;left:14px;border-right:none;border-top:none;border-bottom-left-radius:8px;}
+  .hud-corner.br{bottom:14px;right:14px;border-left:none;border-top:none;border-bottom-right-radius:8px;}
+
+  .mute-toggle{
+    position:absolute;right:16px;bottom:16px;z-index:4;width:44px;height:44px;border-radius:50%;
+    background:rgba(8,20,32,0.6);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.25);
+    display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s;
+  }
+  .mute-toggle:hover{background:rgba(8,20,32,0.8);}
+  .video-live{position:absolute;left:16px;top:16px;z-index:4;}
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1;transform:none;transition:none;}
+    .marquee-track{animation:none;}
+    .motif svg{animation:none;}
+    .pulse-dot{animation:none;display:none;}
+    .live-dot::after{animation:none;}
+    .letter{opacity:1 !important;transform:none !important;transition:none !important;}
+  }
+  @media (max-width:760px){
+    .circuit-layer{display:none;}
+  }
+
+  /* ---------- Animação de letras nos títulos ---------- */
+  .word{display:inline-block;}
+  .letter{
+    display:inline-block;opacity:0;transform:translateY(0.5em) rotate(3deg);
+    transition:opacity .5s cubic-bezier(.2,.7,.3,1), transform .5s cubic-bezier(.2,.7,.3,1);
+    transition-delay:calc(var(--i,0) * 16ms);
+    will-change:transform,opacity;
+  }
+  h1.letters-show .letter, h2.letters-show .letter{opacity:1;transform:none;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="#topo" class="brand"><img src="assets/img/logo-h-final.png" alt="Renomax Energia Solar"></a>
+    <nav class="nav-links">
+      <a href="#diferenciais">Diferenciais</a>
+      <a href="#simulador">Simulador</a>
+      <a href="#video">Vídeo</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#clientes">Clientes</a>
+      <a href="#depoimentos">Depoimentos</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="nav-wa" href="https://wa.me/5585999034444?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20energia%20solar." target="_blank" rel="noopener">
+        <img src="assets/img/wa-glyph-dark.png" alt="" width="17" height="17">
+        <span class="wa-num">(85) 99903-4444</span>
+      </a>
+      <button class="burger" id="burgerBtn" aria-label="Abrir menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-panel" id="mobilePanel">
+    <a href="#diferenciais">Diferenciais</a>
+    <a href="#simulador">Simulador</a>
+    <a href="#video">Vídeo</a>
+    <a href="#projetos">Projetos</a>
+    <a href="#clientes">Clientes</a>
+    <a href="#depoimentos">Depoimentos</a>
+    <a href="#contato">Contato</a>
+  </div>
+</header>
+
+<section class="hero" id="topo">
+  <div class="grid-texture"></div>
+  <div class="circuit-layer" aria-hidden="true">
+    <svg viewBox="0 0 1040 380" preserveAspectRatio="none">
+      <path d="M -10,120 C 150,40 300,180 520,90 S 760,10 980,70" fill="none" stroke="rgba(92,207,203,0.14)" stroke-width="1.2"/>
+      <path d="M -10,260 C 200,340 380,180 600,260 S 860,340 1040,240" fill="none" stroke="rgba(92,207,203,0.14)" stroke-width="1.2"/>
+      <path d="M -10,60 C 120,140 260,60 420,130 S 640,210 820,150" fill="none" stroke="rgba(92,207,203,0.10)" stroke-width="1.2"/>
+    </svg>
+    <span class="pulse-dot p1"></span>
+    <span class="pulse-dot p2"></span>
+    <span class="pulse-dot p3"></span>
+  </div>
+  <div class="motif" style="top:-60px;right:-40px;width:340px;">
+    <svg viewBox="0 0 200 200" width="340" height="340"><path d="M100 6 L188 96 C188 150 150 188 100 194 C50 188 12 150 12 96 Z" fill="none" stroke="rgba(255,255,255,0.10)" stroke-width="1.5"/><path d="M100 40 L100 160 M60 74 L140 126 M140 74 L60 126" stroke="rgba(92,207,203,0.18)" stroke-width="1.5"/></svg>
+  </div>
+  <div class="wrap">
+    <div class="hero-copy">
+      <div class="hero-eyebrow"><span class="dash"></span>RENOMAX ENERGIA SOLAR · FORTALEZA-CE</div>
+      <h1>Energia solar com <span class="accent">engenharia de verdade</span> por trás de cada painel.</h1>
+      <p class="lead">Projetos residenciais, comerciais e industriais em todo o Ceará, com equipe própria, equipamentos certificados e acompanhamento da geração por 12 meses.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="https://wa.me/5585999034444?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20energia%20solar." target="_blank" rel="noopener">Falar com um especialista</a>
+        <a class="btn btn-ghost" href="#simulador">Simular minha economia</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><b><span class="cnt tabular" data-target="3600" data-prefix="+">0</span></b><span>painéis instalados</span></div>
+        <div class="stat"><b><span class="cnt tabular" data-target="6" data-prefix="+">0</span> anos</b><span>de mercado</span></div>
+        <div class="stat"><b><span class="cnt tabular" data-target="12">0</span> meses</b><span>de garantia e monitoramento</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-frame">
+        <video class="hero-bg-video" autoplay muted loop playsinline preload="auto" poster="assets/img/hero-video-poster.jpg">
+          <source src="assets/video/hero-bg.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="hero-chip"><span class="num cnt tabular" data-target="85" data-suffix="%">0%</span><span class="txt">de redução na conta de energia em alguns projetos</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="diff-strip section-pad" id="diferenciais">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow"><span class="dash"></span>Diferenciais Renomax</div>
+      <h2>Por que a Renomax entrega mais do que uma instalação</h2>
+    </div>
+    <div class="diff-grid">
+      <div class="diff-item reveal">
+        <div class="ic"><svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M4 19V10M11 19V5M18 19v-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M3 19h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <h4>Monitoramento contínuo</h4>
+        <p>Acompanhamos a produtividade do seu sistema durante os primeiros 12 meses de operação.</p>
+      </div>
+      <div class="diff-item reveal">
+        <div class="ic"><svg width="30" height="30" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3.2" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 20c0-3.3 2.5-5.8 5.5-5.8s5.5 2.5 5.5 5.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M16 9a2.8 2.8 0 100-5.6M20.5 20c0-2.8-1.9-5-4.5-5.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <h4>Profissionais capacitados</h4>
+        <p>Equipe técnica própria, treinada e experiente em cada etapa do projeto e da instalação.</p>
+      </div>
+      <div class="diff-item reveal">
+        <div class="ic"><svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 5-3 8.5-7 10-4-1.5-7-5-7-10V6l7-3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h4>Material de qualidade</h4>
+        <p>Equipamentos certificados, de marcas reconhecidas e com garantia direta dos fabricantes.</p>
+      </div>
+      <div class="diff-item reveal">
+        <div class="ic"><svg width="30" height="30" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="9" r="5.2" stroke="currentColor" stroke-width="1.8"/><path d="M8.5 13.5L7 21l5-2.4 5 2.4-1.5-7.5" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+        <h4>Registrada no CREA</h4>
+        <p>Mais de 3.600 painéis instalados e mais de 6 anos de atuação no mercado de energia solar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="flow section-pad">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow"><span class="dash"></span>Como funciona</div>
+    </div>
+    <div class="flow-diagram-wrap reveal">
+      <img class="flow-diagram-img" src="assets/img/flow-diagram-new.webp" alt="Veja como funciona a energia solar na prática, em 4 etapas: captação pelos módulos fotovoltaicos, conversão pelo inversor, consumo pelos eletrodomésticos e medição bidirecional pelo novo medidor de energia.">
+    </div>
+  </div>
+</section>
+
+<section class="benefits section-pad" id="beneficios">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow"><span class="dash"></span>Benefícios da energia solar</div>
+      <h2>O que muda na prática para você</h2>
+    </div>
+    <div class="benefits-layout">
+      <div class="benefits-list reveal">
+        <div class="benefit-row">
+          <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 12a8 8 0 0113.5-5.7M20 12a8 8 0 01-13.5 5.7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M17 3v4h-4M7 21v-4h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div><h4>Retorno rápido do investimento</h4><p>O payback costuma acontecer entre 2 e 5 anos após a instalação.</p></div>
+        </div>
+        <div class="benefit-row">
+          <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M3 17c3-1 4-4 8-4s5 3 8 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="7" r="3" stroke="currentColor" stroke-width="1.8"/></svg></div>
+          <div><h4>Economia real na conta de energia</h4><p>A redução pode chegar a 85%, variando conforme o perfil de consumo e o projeto técnico.</p></div>
+        </div>
+        <div class="benefit-row">
+          <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M8 9h8M8 13h5M8 17h3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          <div><h4>Opções de financiamento</h4><p>A parcela pode substituir o valor da sua fatura de energia, com prazos e taxas especiais.</p></div>
+        </div>
+        <div class="benefit-row">
+          <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 5-3 8.5-7 10-4-1.5-7-5-7-10V6l7-3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+          <div><h4>Alta durabilidade</h4><p>Módulos com vida útil superior a 25 anos e inversores superiores a 12 anos.</p></div>
+        </div>
+        <div class="benefit-row">
+          <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 20s-7-4.4-7-10a4.5 4.5 0 018-2.8A4.5 4.5 0 0121 10c0 5.6-9 10-9 10z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+          <div><h4>Sustentabilidade</h4><p>Energia limpa, renovável e com baixíssimo impacto ambiental.</p></div>
+        </div>
+      </div>
+      <div class="benefits-side reveal">
+        <span class="big">85%</span>
+        <p>é a redução máxima observada na conta de energia após a instalação de um sistema solar Renomax.</p>
+        <div class="divider"></div>
+        <span class="big" style="font-size:32px;">2 a 5 anos</span>
+        <p>é o tempo médio de retorno do investimento — depois disso, a energia gerada é economia líquida.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="calc section-pad" id="simulador">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow"><span class="dash"></span>Simulador de economia</div>
+      <h2>Veja quanto você pode economizar</h2>
+      <p>Escolha o seu perfil e informe o valor médio da sua conta de energia para simular a economia com um sistema Renomax.</p>
+    </div>
+    <div class="calc-panel reveal" style="position:relative;">
+      <div class="grid-texture"></div>
+      <div class="hud-corner tl"></div>
+      <div class="hud-corner tr"></div>
+      <div class="hud-corner bl"></div>
+      <div class="hud-corner br"></div>
+      <div class="calc-grid" style="position:relative;z-index:1;">
+        <div class="calc-inputs">
+          <span class="field-label">Perfil de consumo</span>
+          <div class="segs" id="segButtons">
+            <button class="seg-btn active" data-pct="0.65" type="button">Residencial<br><small style="font-weight:500;opacity:.75;">~65% de economia</small></button>
+            <button class="seg-btn" data-pct="0.75" type="button">Comercial<br><small style="font-weight:500;opacity:.75;">~75% de economia</small></button>
+            <button class="seg-btn" data-pct="0.55" type="button">Industrial<br><small style="font-weight:500;opacity:.75;">~55% de economia</small></button>
+          </div>
+          <span class="field-label">Valor médio da conta de energia (mensal)</span>
+          <div class="input-money">
+            <span>R$</span>
+            <input type="number" id="billInput" value="500" min="50" max="20000" step="10">
+          </div>
+          <input type="range" class="slider" id="billSlider" min="50" max="5000" step="10" value="500">
+          <p class="calc-note">Simulação estimativa com base nos percentuais médios de economia da Renomax por perfil de consumo. Os valores reais variam conforme o projeto técnico, o padrão de consumo e as condições do local de instalação.</p>
+        </div>
+        <div class="calc-results">
+          <div class="result-card highlight">
+            <div class="rlabel">Economia mensal estimada</div>
+            <div class="rvalue tabular" id="rMensal">R$ 325</div>
+          </div>
+          <div class="result-mini">
+            <div class="result-card">
+              <div class="rlabel">Nova conta estimada</div>
+              <div class="rvalue tabular" id="rNovaConta">R$ 175</div>
+            </div>
+            <div class="result-card">
+              <div class="rlabel">Economia em 12 meses</div>
+              <div class="rvalue tabular" id="rAnual">R$ 3.900</div>
+            </div>
+          </div>
+          <a class="btn btn-primary" style="margin-top:6px;justify-content:center;" href="https://wa.me/5585999034444?text=Ol%C3%A1!%20Simulei%20minha%20economia%20no%20site%20e%20quero%20um%20or%C3%A7amento." target="_blank" rel="noopener">Quero esse projeto no WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="video-sec section-pad" id="video">
+  <div class="grid-texture on-light"></div>
+  <div class="wrap">
+    <div class="video-layout">
+      <div class="video-card reveal" id="videoCard">
+        <div class="hud-corner tl"></div>
+        <div class="hud-corner tr"></div>
+        <div class="hud-corner bl"></div>
+        <div class="hud-corner br"></div>
+        <video id="mainVideo" playsinline muted preload="auto" poster="assets/img/video-poster2.jpg">
+          <source src="assets/video/main-video.mp4" type="video/mp4">
+        </video>
+        <button class="mute-toggle" id="muteToggle" aria-label="Ativar som" type="button">
+          <svg id="muteIconOff" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="#fff"/><path d="M16 9l5 6M21 9l-5 6" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <svg id="muteIconOn" width="20" height="20" viewBox="0 0 24 24" fill="none" style="display:none;"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="#fff"/><path d="M16.5 8.5a5 5 0 010 7M19 6a8.5 8.5 0 010 12" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="video-copy reveal">
+        <span class="tag">Vídeo institucional</span>
+        <h2>Tecnologia e cuidado em cada instalação</h2>
+        <p>Projetos residenciais, comerciais e de diferentes escalas, executados pela equipe Renomax do dimensionamento à conexão com a rede — com eficiência e confiança.</p>
+        <a class="btn btn-dark" href="https://wa.me/5585999034444?text=Ol%C3%A1!%20Assisti%20ao%20v%C3%ADdeo%20e%20quero%20saber%20mais." target="_blank" rel="noopener">Quero um projeto assim</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="clients section-pad" id="clientes">
+  <div class="wrap">
+    <div class="section-head reveal" style="margin-bottom:40px;">
+      <div class="eyebrow"><span class="dash"></span>Quem confia na Renomax</div>
+      <h2>Empresas que já economizam com a gente</h2>
+    </div>
+  </div>
+  <div class="marquee-mask">
+    <div class="marquee-track" id="marqueeTrack">
+      <div class="client-card"><img src="assets/img/client-espetimchef.jpg" alt="Espetim do Chef"></div>
+      <div class="client-card"><img src="assets/img/client-viladainfancia.jpg" alt="Vila da Infância Creche Escola"></div>
+      <div class="client-card"><img src="assets/img/client-ruymarques.jpg" alt="Ruy Marques & Eudes Jales Advogados"></div>
+      <div class="client-card"><img src="assets/img/client-kmqueijos.jpg" alt="KM Queijos"></div>
+      <div class="client-card"><img src="assets/img/client-bomjesus.jpg" alt="Bom Jesus Auto Peças"></div>
+      <div class="client-card"><img src="assets/img/client-eubiojunior.jpg" alt="Eubio Junior Engenharia"></div>
+      <div class="client-card"><img src="assets/img/client-lcengenharia.jpg" alt="LC Engenharia"></div>
+      <div class="client-card"><img src="assets/img/client-skyler.jpg" alt="Skyler Lifewear"></div>
+      <div class="client-card"><img src="assets/img/client-arena.jpg" alt="Arena Bar & Petiscaria"></div>
+      <!-- duplicate for seamless loop -->
+      <div class="client-card"><img src="assets/img/client-espetimchef.jpg" alt="Espetim do Chef"></div>
+      <div class="client-card"><img src="assets/img/client-viladainfancia.jpg" alt="Vila da Infância Creche Escola"></div>
+      <div class="client-card"><img src="assets/img/client-ruymarques.jpg" alt="Ruy Marques & Eudes Jales Advogados"></div>
+      <div class="client-card"><img src="assets/img/client-kmqueijos.jpg" alt="KM Queijos"></div>
+      <div class="client-card"><img src="assets/img/client-bomjesus.jpg" alt="Bom Jesus Auto Peças"></div>
+      <div class="client-card"><img src="assets/img/client-eubiojunior.jpg" alt="Eubio Junior Engenharia"></div>
+      <div class="client-card"><img src="assets/img/client-lcengenharia.jpg" alt="LC Engenharia"></div>
+      <div class="client-card"><img src="assets/img/client-skyler.jpg" alt="Skyler Lifewear"></div>
+      <div class="client-card"><img src="assets/img/client-arena.jpg" alt="Arena Bar & Petiscaria"></div>
+    </div>
+  </div>
+</section>
+
+<section class="testi-sec section-pad" id="depoimentos">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow"><span class="dash"></span>Feedbacks em vídeo</div>
+      <h2>Quem já economiza conta a experiência</h2>
+      <p>Depoimentos reais de clientes Renomax, gravados direto no dia a dia dos projetos.</p>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="testi-video-wrap">
+          <video class="testi-video" playsinline preload="none" poster="assets/img/testi1-poster.jpg">
+            <source src="assets/video/testimonial-1.mp4" type="video/mp4">
+          </video>
+          <div class="poster-layer testi-poster">
+            <img src="assets/img/testi1-poster.jpg" alt="Depoimento de cliente Renomax">
+            <div class="play-btn small"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M8 5.5v13l11-6.5-11-6.5z" fill="#0F3559"/></svg></div>
+          </div>
+        </div>
+        <div class="testi-cap"><b>Cliente Renomax</b><span>Projeto residencial</span></div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-video-wrap">
+          <video class="testi-video" playsinline preload="none" poster="assets/img/testi2-poster.jpg">
+            <source src="assets/video/testimonial-2.mp4" type="video/mp4">
+          </video>
+          <div class="poster-layer testi-poster">
+            <img src="assets/img/testi2-poster.jpg" alt="Depoimento Arena Bar e Petiscaria">
+            <div class="play-btn small"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M8 5.5v13l11-6.5-11-6.5z" fill="#0F3559"/></svg></div>
+          </div>
+        </div>
+        <div class="testi-cap"><b>Arena Bar &amp; Petiscaria</b><span>Projeto comercial</span></div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-video-wrap">
+          <video class="testi-video" playsinline preload="none" poster="assets/img/testi3-poster.jpg">
+            <source src="assets/video/testimonial-3.mp4" type="video/mp4">
+          </video>
+          <div class="poster-layer testi-poster">
+            <img src="assets/img/testi3-poster.jpg" alt="Depoimento de cliente Renomax">
+            <div class="play-btn small"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M8 5.5v13l11-6.5-11-6.5z" fill="#0F3559"/></svg></div>
+          </div>
+        </div>
+        <div class="testi-cap"><b>Cliente Renomax</b><span>Projeto residencial</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery-sec section-pad" id="projetos">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow"><span class="dash"></span>Projetos realizados</div>
+      <h2>Instalações Renomax em todo o Ceará</h2>
+      <p>Uma amostra dos projetos residenciais, comerciais e institucionais já entregues pela nossa equipe.</p>
+    </div>
+    <div class="gal-grid" id="galGrid">
+      <div class="gal-item big reveal" data-cap="Projeto de grande porte · cobertura industrial"><img src="assets/img/gal-industrial-1.jpg" alt="Instalação de grande porte Renomax"><span class="tagchip">Grande porte</span></div>
+      <div class="gal-item reveal" data-cap="Residência em Fortaleza · CE"><img src="assets/img/gal-fortaleza-1.jpg" alt="Instalação residencial em Fortaleza"><span class="tagchip">Fortaleza · CE</span></div>
+      <div class="gal-item reveal" data-cap="Residência em Beberibe · CE"><img src="assets/img/gal-beberibe.jpg" alt="Instalação residencial em Beberibe"><span class="tagchip">Beberibe · CE</span></div>
+      <div class="gal-item tall reveal" data-cap="Instalação residencial"><img src="assets/img/gal-new-1.jpg" alt="Instalação residencial Renomax"><span class="tagchip">Residencial</span></div>
+      <div class="gal-item reveal" data-cap="Residência em Eusébio · CE"><img src="assets/img/gal-eusebio.jpg" alt="Instalação residencial em Eusébio"><span class="tagchip">Eusébio · CE</span></div>
+      <div class="gal-item reveal" data-cap="Sítio em Boa Viagem · CE"><img src="assets/img/gal-boaviagem.jpg" alt="Instalação rural em Boa Viagem"><span class="tagchip">Boa Viagem · CE</span></div>
+      <div class="gal-item wide reveal" data-cap="Instalação comercial de médio porte"><img src="assets/img/gal-new-2.jpg" alt="Instalação comercial Renomax"><span class="tagchip">Comercial</span></div>
+      <div class="gal-item reveal" data-cap="Projeto institucional"><img src="assets/img/gal-institucional-1.jpg" alt="Projeto institucional Renomax"><span class="tagchip">Institucional</span></div>
+      <div class="gal-item reveal" data-cap="Loja em Fortaleza · CE"><img src="assets/img/gal-fortaleza-2.jpg" alt="Instalação comercial em Fortaleza"><span class="tagchip">Fortaleza · CE</span></div>
+      <div class="gal-item tall reveal" data-cap="Residência em Guaiuba · CE"><img src="assets/img/gal-guaiuba.jpg" alt="Instalação residencial em Guaiuba"><span class="tagchip">Guaiuba · CE</span></div>
+      <div class="gal-item reveal" data-cap="Projeto comercial"><img src="assets/img/gal-comercial-1.jpg" alt="Projeto comercial Renomax"><span class="tagchip">Comercial</span></div>
+      <div class="gal-item reveal" data-cap="Instalação residencial"><img src="assets/img/gal-new-3.jpg" alt="Instalação residencial Renomax"><span class="tagchip">Residencial</span></div>
+      <div class="gal-item reveal" data-cap="Residência em Taíba · CE"><img src="assets/img/gal-taiba.jpg" alt="Instalação residencial em Taíba"><span class="tagchip">Taíba · CE</span></div>
+      <div class="gal-item wide reveal" data-cap="Residência em Fortaleza · CE"><img src="assets/img/gal-fortaleza-3.jpg" alt="Instalação residencial em Fortaleza"><span class="tagchip">Fortaleza · CE</span></div>
+      <div class="gal-item big reveal" data-cap="Complexo institucional com múltiplas coberturas fotovoltaicas"><img src="assets/img/gal-big-2.jpg" alt="Instalação institucional de grande porte Renomax"><span class="tagchip">Institucional</span></div>
+      <div class="gal-item reveal" data-cap="Projeto institucional"><img src="assets/img/gal-institucional-2.jpg" alt="Projeto institucional Renomax"><span class="tagchip">Institucional</span></div>
+      <div class="gal-item reveal" data-cap="Instalação residencial"><img src="assets/img/gal-new-4.jpg" alt="Instalação residencial Renomax"><span class="tagchip">Residencial</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact section-pad" id="contato">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow"><span class="dash"></span>Fale com a gente</div>
+      <h2>Pronto para reduzir sua conta de energia?</h2>
+      <p>Fale agora com nosso time e receba uma proposta sob medida para o seu perfil de consumo.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card reveal">
+        <div class="cic"><img src="assets/img/wa-glyph-teal.png" alt="" width="26" height="26"></div>
+        <h4>WhatsApp</h4>
+        <p>Atendimento rápido e direto com nosso time comercial.</p>
+        <a class="link" href="https://wa.me/5585999034444?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20energia%20solar." target="_blank" rel="noopener">(85) 99903-4444 →</a>
+      </div>
+      <div class="contact-card reveal">
+        <div class="cic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M4 6.5l8 6 8-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h4>E-mail</h4>
+        <p>Envie seu projeto, dúvidas ou pedido de orçamento.</p>
+        <a class="link" href="mailto:comercial@renomaxengenharia.com.br">comercial@renomaxengenharia.com.br →</a>
+      </div>
+      <div class="contact-card reveal">
+        <div class="cic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3.5" y="3.5" width="17" height="17" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor"/></svg></div>
+        <h4>Instagram</h4>
+        <p>Acompanhe projetos, obras e novidades da Renomax.</p>
+        <a class="link" href="https://instagram.com/renomax.energiasolar" target="_blank" rel="noopener">@renomax.energiasolar →</a>
+      </div>
+    </div>
+    <div class="cta-band reveal">
+      <h3>100% de satisfação dos nossos clientes em projetos entregues por todo o Ceará.</h3>
+      <a class="btn btn-dark" href="https://wa.me/5585999034444?text=Ol%C3%A1!%20Quero%20fazer%20parte%20do%20time%20de%20quem%20j%C3%A1%20economiza%20com%20energia%20solar." target="_blank" rel="noopener">Quero fazer parte desse time</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <img src="assets/img/logo-h-final.png" alt="Renomax Energia Solar">
+        <p>Engenharia e projetos de energia solar fotovoltaica para residências, comércios e indústrias em todo o Estado do Ceará. Empresa registrada no CREA, no mercado desde 2020.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Navegação</h5>
+        <a href="#diferenciais">Diferenciais</a>
+        <a href="#simulador">Simulador de economia</a>
+        <a href="#video">Vídeo institucional</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#clientes">Clientes</a>
+      </div>
+      <div class="foot-col">
+        <h5>Contato</h5>
+        <a href="https://wa.me/5585999034444" target="_blank" rel="noopener">WhatsApp (85) 99903-4444</a>
+        <a href="mailto:comercial@renomaxengenharia.com.br">comercial@renomaxengenharia.com.br</a>
+        <a href="https://instagram.com/renomax.energiasolar" target="_blank" rel="noopener">@renomax.energiasolar</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Rua+Nogueira+Acioli%2C+1505%2C+Centro%2C+Fortaleza+-+CE" target="_blank" rel="noopener">Rua Nogueira Acioli, 1505, Centro, Fortaleza</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="yearNow">2026</span> Renomax Energia Solar. Todos os direitos reservados.</span>
+      <div class="foot-social">
+        <a href="https://instagram.com/renomax.energiasolar" target="_blank" rel="noopener" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="3.5" y="3.5" width="17" height="17" rx="5" stroke="#fff" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke="#fff" stroke-width="1.6"/></svg></a>
+        <a href="https://wa.me/5585999034444" target="_blank" rel="noopener" aria-label="WhatsApp"><img src="assets/img/wa-glyph-white.png" alt="" width="17" height="17"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Fechar">✕</button>
+  <img id="lightboxImg" src="" alt="">
+  <div class="lightbox-cap" id="lightboxCap"></div>
+</div>
+
+
+<a class="wa-float" href="https://wa.me/5585999034444?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20energia%20solar." target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <img src="assets/img/wa-glyph-white.png" alt="WhatsApp" width="30" height="30">
+</a>
+
+<script>
+// ---------- Mobile nav ----------
+var burger = document.getElementById('burgerBtn');
+if(burger){
+  burger.addEventListener('click', function(){
+    document.body.classList.toggle('nav-open');
+  });
+}
+document.querySelectorAll('.mobile-panel a').forEach(function(a){
+  a.addEventListener('click', function(){ document.body.classList.remove('nav-open'); });
+});
+
+// ---------- Footer year ----------
+var yearEl = document.getElementById('yearNow');
+if(yearEl){ yearEl.textContent = new Date().getFullYear(); }
+
+// ---------- Calculadora ----------
+(function(){
+  var segButtons = document.querySelectorAll('.seg-btn');
+  var billInput = document.getElementById('billInput');
+  var billSlider = document.getElementById('billSlider');
+  var rMensal = document.getElementById('rMensal');
+  var rNovaConta = document.getElementById('rNovaConta');
+  var rAnual = document.getElementById('rAnual');
+  var currentPct = 0.65;
+
+  function brl(v){
+    v = Math.max(0, Math.round(v));
+    return 'R$ ' + v.toLocaleString('pt-BR');
+  }
+
+  function recalc(){
+    var bill = parseFloat(billInput.value) || 0;
+    var economia = bill * currentPct;
+    var novaConta = bill - economia;
+    rMensal.textContent = brl(economia);
+    rNovaConta.textContent = brl(novaConta);
+    rAnual.textContent = brl(economia * 12);
+  }
+
+  segButtons.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      segButtons.forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      currentPct = parseFloat(btn.getAttribute('data-pct'));
+      recalc();
+    });
+  });
+
+  if(billInput && billSlider){
+    billInput.addEventListener('input', function(){
+      billSlider.value = billInput.value;
+      recalc();
+    });
+    billSlider.addEventListener('input', function(){
+      billInput.value = billSlider.value;
+      recalc();
+    });
+  }
+
+  recalc();
+})();
+
+// ---------- Vídeo (autoplay ao entrar na tela + botão de som) ----------
+(function(){
+  var video = document.getElementById('mainVideo');
+  var card = document.getElementById('videoCard');
+  var muteBtn = document.getElementById('muteToggle');
+  var iconOff = document.getElementById('muteIconOff');
+  var iconOn = document.getElementById('muteIconOn');
+  if(!video || !card) return;
+
+  video.muted = true;
+
+  function updateIcon(){
+    if(iconOff && iconOn){
+      iconOff.style.display = video.muted ? 'block' : 'none';
+      iconOn.style.display = video.muted ? 'none' : 'block';
+    }
+  }
+  updateIcon();
+
+  if(muteBtn){
+    muteBtn.addEventListener('click', function(){
+      video.muted = !video.muted;
+      updateIcon();
+    });
+  }
+
+  if('IntersectionObserver' in window){
+    var vObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          var p = video.play();
+          if(p && p.catch){ p.catch(function(){}); }
+        } else {
+          video.pause();
+        }
+      });
+    }, {threshold:0.45});
+    vObs.observe(card);
+  }
+})();
+
+// ---------- Depoimentos em vídeo (clique para tocar) ----------
+(function(){
+  var cards = document.querySelectorAll('.testi-video-wrap');
+  cards.forEach(function(card){
+    var video = card.querySelector('.testi-video');
+    var poster = card.querySelector('.testi-poster');
+    if(!video || !poster) return;
+    poster.addEventListener('click', function(){
+      poster.style.display = 'none';
+      video.setAttribute('controls', 'true');
+      video.muted = false;
+      var p = video.play();
+      if(p && p.catch){ p.catch(function(){}); }
+    });
+  });
+})();
+
+// ---------- Contadores animados ----------
+(function(){
+  var counters = document.querySelectorAll('.cnt[data-target]');
+  if(!counters.length) return;
+
+  function formatCount(value, prefix, suffix){
+    var v = Math.round(value);
+    return (prefix||'') + v.toLocaleString('pt-BR') + (suffix||'');
+  }
+
+  function animateCounter(el){
+    var target = parseFloat(el.getAttribute('data-target')) || 0;
+    var prefix = el.getAttribute('data-prefix') || '';
+    var suffix = el.getAttribute('data-suffix') || '';
+    var duration = 1400;
+    var start = null;
+    function step(ts){
+      if(start === null){ start = ts; }
+      var progress = Math.min((ts - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = formatCount(target * eased, prefix, suffix);
+      if(progress < 1){ requestAnimationFrame(step); }
+    }
+    requestAnimationFrame(step);
+  }
+
+  if(!('IntersectionObserver' in window)){
+    counters.forEach(function(el){ animateCounter(el); });
+    return;
+  }
+  var cObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        animateCounter(entry.target);
+        cObs.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.5});
+  counters.forEach(function(el){ cObs.observe(el); });
+})();
+
+// ---------- Galeria / Lightbox ----------
+(function(){
+  var items = document.querySelectorAll('.gal-item');
+  var lightbox = document.getElementById('lightbox');
+  var lightboxImg = document.getElementById('lightboxImg');
+  var lightboxCap = document.getElementById('lightboxCap');
+  var closeBtn = document.getElementById('lightboxClose');
+
+  items.forEach(function(item){
+    item.addEventListener('click', function(){
+      var img = item.querySelector('img');
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightboxCap.textContent = item.getAttribute('data-cap') || '';
+      lightbox.classList.add('open');
+    });
+  });
+
+  function closeLightbox(){ lightbox.classList.remove('open'); lightboxImg.src=''; }
+  if(closeBtn){ closeBtn.addEventListener('click', closeLightbox); }
+  if(lightbox){
+    lightbox.addEventListener('click', function(e){
+      if(e.target === lightbox){ closeLightbox(); }
+    });
+  }
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){ closeLightbox(); }
+  });
+})();
+
+// ---------- Animação de letras nos títulos ----------
+(function(){
+  var heads = document.querySelectorAll('h1, h2');
+  if(!heads.length) return;
+
+  function wrapLetters(el){
+    var idx = 0;
+    function walk(node){
+      if(node.nodeType === 3){
+        var text = node.textContent;
+        var frag = document.createDocumentFragment();
+        var words = text.split(' ');
+        words.forEach(function(word, wi){
+          if(word.length){
+            var wordSpan = document.createElement('span');
+            wordSpan.className = 'word';
+            for(var i=0;i<word.length;i++){
+              var span = document.createElement('span');
+              span.className = 'letter';
+              span.style.setProperty('--i', idx++);
+              span.textContent = word[i];
+              wordSpan.appendChild(span);
+            }
+            frag.appendChild(wordSpan);
+          }
+          if(wi < words.length - 1){
+            frag.appendChild(document.createTextNode(' '));
+          }
+        });
+        node.parentNode.replaceChild(frag, node);
+      } else if(node.nodeType === 1){
+        Array.prototype.slice.call(node.childNodes).forEach(walk);
+      }
+    }
+    walk(el);
+  }
+
+  heads.forEach(function(h){ wrapLetters(h); });
+
+  if(!('IntersectionObserver' in window)){
+    heads.forEach(function(h){ h.classList.add('letters-show'); });
+    return;
+  }
+  var hObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('letters-show');
+        hObs.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.35, rootMargin:'0px 0px -40px 0px'});
+  heads.forEach(function(h){ hObs.observe(h); });
+})();
+
+// ---------- Reveal on scroll ----------
+(function(){
+  var els = document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){
+    els.forEach(function(el){ el.classList.add('show'); });
+    return;
+  }
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('show');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, {threshold: 0.12, rootMargin: '0px 0px -60px 0px'});
+  els.forEach(function(el){ obs.observe(el); });
+})();
+
+</script>
+</body>
+</html>
